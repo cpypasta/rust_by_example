@@ -1,3 +1,5 @@
+#![allow(unused_variables)]
+
 fn main() {
     // SCALAR TYPES
 
@@ -10,36 +12,56 @@ fn main() {
     let x: i128 = 170141183460469231731687303715884105727; // -170141183460469231731687303715884105728
     let x: isize = 9223372036854775807; // -9223372036854775808 (pointer size)    
 
+    println!("Signed integer bytes:");
+    println!("i8_size: {}", std::mem::size_of_val(&23i8));
+    println!("i16_size: {}", std::mem::size_of_val(&23i16));
+    println!("i32_size: {}", std::mem::size_of_val(&23i32));
+    println!("i64_size: {}", std::mem::size_of_val(&23i64));
+    println!("i128_size: {}", std::mem::size_of_val(&23i128));
+    println!("isize_size: {}", std::mem::size_of_val(&23isize));
+
     // unsigned integers (with max values)
-    let x: u8 = 255; // 0
+    let x: u8 = 255; // 0; also how a byte is represented in Rust
     let x: u16 = 65535; // 0
     let x: u32 = 4294967295; // 0
     let x: u64 = 18446744073709551615; // 0
     let x: u128 = 340282366920938463463374607431768211455; // 0
     let x: usize = 18446744073709551615; // 0 (pointer size)
 
+    println!("Unsigned integer bytes:");
+    println!("u8_size (byte): {}", std::mem::size_of_val(&23u8));
+    println!("u16_size: {}", std::mem::size_of_val(&23u16));
+    println!("u32_size: {}", std::mem::size_of_val(&23u32));
+    println!("u64_size: {}", std::mem::size_of_val(&23u64));
+    println!("u128_size: {}", std::mem::size_of_val(&23u128));
+    println!("usize_size: {}", std::mem::size_of_val(&23usize));
+
     // floating-point numbers
-    let x: f32 = 340282346638528859811704183484516925440.0;
+    let x: f32 = f32::MAX;
     println!("f32 w/ no fraction positive: {:.1}", x);
-    let x: f32 = -34028234663852885981170418348451692544.0;
+    let x: f32 = f32::MIN;
     println!("f32 w/ no fraction negative {:.1}", x);
     let x: f32 = 8388607.5;
     println!("f32 with single fraction positive {:.1}", x);
     let x: f32 = -8388607.5; // negative with fraction
-    println!("f32 with single fraction negative {:.1}", x);s
+    println!("f32 with single fraction negative {:.1}", x);
     let x: f32 = 260000.55;
     println!("f32 with double fraction positive {:.2}", x);
     let x: f32 = 99999.555;
     println!("f32 with triple fraction positive {:.3}", x);
 
-    let x: f64 = 17976931348623157580412819756850388593900235011794141176754562789180111453639664485361928830517704263393537268510363518759043843737070229269956251768752166883397940628862983287625967246810352023792017211936260189893797509826303293149283469713429932049693599732425511693654044437030940398714664210204414967808.0;
+    let x: f64 = f64::MAX;
     println!("f64 w/ no fraction positive: {:.1}", x);
-    let x: f64 = -17976931348623157580412819756850388593900235011794141176754562789180111453639664485361928830517704263393537268510363518759043843737070229269956251768752166883397940628862983287625967246810352023792017211936260189893797509826303293149283469713429932049693599732425511693654044437030940398714664210204414967808.0;
+    let x: f64 = f64::MIN;
     println!("f64 w/ no fraction negative: {:.1}", x);
+
+    println!("Floating-point bytes:");
+    println!("f32_size: {}", std::mem::size_of_val(&23f32));
+    println!("f64_size: {}", std::mem::size_of_val(&23f64));
 
     // char unicode
     let x: char = 'a';
-    println!("char: {}", x);
+    println!("char: {}, char_bytes ascii: {}", x, b'a');
 
     // boolean
     let x: bool = true;
